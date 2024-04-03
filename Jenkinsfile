@@ -6,9 +6,11 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
+        stage("Build") {
             steps {
-                git branch: 'main', url: 'https://github.com/rr920/tweet-trend.git'
+                echo "--------------------Build Started---------------------"
+                sh 'mvn clean deploy -Dmaven.test.skip=true'
+                echo "-------------------Build Completed--------------------"
             }
         }
     }
